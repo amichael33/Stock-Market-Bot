@@ -1,0 +1,54 @@
+name: Daily Stock Trading Bot
+
+on:
+  schedule:
+    # 9:30 AM ET (Market Open) = 13:30 UTC
+    - cron: '30 13 * * 1-5'  # Monday-Friday at 13:30 UTC
+    # 12:30 PM ET (Mid-Market) = 16:30 UTC
+    - cron: '30 16 * * 1-5'  # Monday-Friday at 16:30 UTC
+  workflow_dispatch: # Manual trigger for testing
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Create data directories
+      run: |
+        mkdir -p data_storage
+        mkdir -p secret
+
+    - name: Create API credentials file
+      run: |
+        echo "endpoint: https://paper-api.alpaca.markets/v2" > secret/alpacaKey.txt
+        echo "key: ${{ secrets.ALPACA_API_KEY }}" >> secret/alpacaKey.txt
+        echo "secret: ${{ secrets.ALPACA_API_SECRET }}" >> secret/alpacaKey.txt
+
+    - name: Run trading bot
+      run: python stock_bot.py
+
+    - name: Commit and push data changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data_storage/
+        git diff --staged --quiet || git commit -m "Update trading data [automated]"
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}

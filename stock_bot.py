@@ -18,8 +18,20 @@ class StockBot:
         self.cooldown_tracker = self.load_data('data_storage/cooldown_tracker.json')
         self.max_positions = MAX_POSITIONS
         self.max_trades_per_day = MAX_TRADES_PER_DAY
-        self.trades_today = 0
+
+        # Load or initialize daily stats
+        self.daily_stats = self.load_data('data_storage/daily_stats.json')
         self.current_date = datetime.now().date()
+
+        # Check if it's a new day and reset trade count if needed
+        if self.daily_stats.get('date') != self.current_date.isoformat():
+            self.trades_today = 0
+            self.daily_stats = {
+                'date': self.current_date.isoformat(),
+                'trades_today': 0
+            }
+        else:
+            self.trades_today = self.daily_stats.get('trades_today', 0)
 
         self.stock_metrics = {}
 
@@ -194,6 +206,7 @@ class StockBot:
                 symbols_to_remove.append(symbol)
                 self.cooldown_tracker[symbol] = self.current_date.isoformat()
                 self.trades_today += 1
+                self.daily_stats['trades_today'] = self.trades_today
 
         for symbol in symbols_to_remove:
             del self.portfolio[symbol]
@@ -264,6 +277,7 @@ class StockBot:
 
             self.cooldown_tracker[symbol] = self.current_date.isoformat()
             self.trades_today += 1
+            self.daily_stats['trades_today'] = self.trades_today
             current_positions += 1
 
     def print_holdings_report(self):
@@ -320,6 +334,7 @@ class StockBot:
         self.save_data(self.historical_data, 'data_storage/historical_data.json')
         self.save_data(self.portfolio, 'data_storage/portfolio.json')
         self.save_data(self.cooldown_tracker, 'data_storage/cooldown_tracker.json')
+        self.save_data(self.daily_stats, 'data_storage/daily_stats.json')
 
         print("\nTrading cycle completed.")
 
