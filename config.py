@@ -1,6 +1,24 @@
-# Load API keys from secret file
+# Load API keys from env or secret file
+import os
+
 def load_api_keys():
     """Load API keys from secret file"""
+    # Prefer environment variables (best for GitHub Actions)
+    env_key = os.getenv("ALPACA_API_KEY") or os.getenv("ALPACA_KEY")
+    env_secret = os.getenv("ALPACA_API_SECRET") or os.getenv("ALPACA_SECRET")
+    env_endpoint = (
+        os.getenv("ALPACA_ENDPOINT")
+        or os.getenv("ALPACA_BASE_URL")
+        or os.getenv("ALPACA_API_BASE_URL")
+    )
+
+    if env_key and env_secret:
+        return {
+            "endpoint": env_endpoint or "https://paper-api.alpaca.markets/v2",
+            "key": env_key,
+            "secret": env_secret,
+        }
+
     try:
         with open('secret/alpacaKey.txt', 'r') as f:
             lines = f.readlines()

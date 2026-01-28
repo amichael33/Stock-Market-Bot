@@ -13,6 +13,10 @@ on:
 jobs:
   trade:
     runs-on: ubuntu-latest
+    env:
+      ALPACA_ENDPOINT: https://paper-api.alpaca.markets/v2
+      ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+      ALPACA_API_SECRET: ${{ secrets.ALPACA_API_SECRET }}
 
     steps:
     - name: Checkout code
@@ -28,16 +32,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Verify Alpaca secrets are set
+      run: |
+        test -n "$ALPACA_API_KEY"
+        test -n "$ALPACA_API_SECRET"
+
     - name: Create data directories
       run: |
         mkdir -p data_storage
-        mkdir -p secret
-
-    - name: Create API credentials file
-      run: |
-        echo "endpoint: https://paper-api.alpaca.markets/v2" > secret/alpacaKey.txt
-        echo "key: ${{ secrets.ALPACA_API_KEY }}" >> secret/alpacaKey.txt
-        echo "secret: ${{ secrets.ALPACA_API_SECRET }}" >> secret/alpacaKey.txt
 
     - name: Run trading bot
       run: python stock_bot.py
