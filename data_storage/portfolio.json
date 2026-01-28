@@ -1,9 +1,4 @@
 {
-  "AAPL": {
-    "shares": 10,
-    "buy_price": 255.76,
-    "target_high": 257.92
-  },
   "TSLA": {
     "shares": 10,
     "buy_price": 434.85,
@@ -18,20 +13,5 @@
     "shares": 10,
     "buy_price": 175.73,
     "target_high": 195.0
-  },
-  "IDXX": {
-    "shares": 10,
-    "buy_price": 468.5,
-    "target_high": 468.5
-  },
-  "GOOGL": {
-    "shares": 10,
-    "buy_price": 334.7,
-    "target_high": 334.7
-  },
-  "NVDA": {
-    "shares": 10,
-    "buy_price": 192.1,
-    "target_high": 192.1
   }
 }
