@@ -13,5 +13,20 @@
     "shares": 10,
     "buy_price": 449.01,
     "target_high": 483.0
+  },
+  "CRM": {
+    "shares": 10,
+    "buy_price": 219.35,
+    "target_high": 247.49
+  },
+  "ILMN": {
+    "shares": 10,
+    "buy_price": 148.45,
+    "target_high": 291.0
+  },
+  "AMZN": {
+    "shares": 10,
+    "buy_price": 238.99,
+    "target_high": 243.17
   }
 }
