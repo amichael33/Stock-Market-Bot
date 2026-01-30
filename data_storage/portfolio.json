@@ -1,9 +1,4 @@
 {
-  "NFLX": {
-    "shares": 10,
-    "buy_price": 85.09,
-    "target_high": 88.43
-  },
   "ORCL": {
     "shares": 10,
     "buy_price": 175.73,
@@ -23,10 +18,5 @@
     "shares": 10,
     "buy_price": 148.45,
     "target_high": 291.0
-  },
-  "AMZN": {
-    "shares": 10,
-    "buy_price": 238.99,
-    "target_high": 243.17
   }
 }
