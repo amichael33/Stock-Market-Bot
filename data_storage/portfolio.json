@@ -18,5 +18,25 @@
     "shares": 10,
     "buy_price": 148.45,
     "target_high": 291.0
+  },
+  "NVDA": {
+    "shares": 10,
+    "buy_price": 188.63,
+    "target_high": 192.1
+  },
+  "GOOGL": {
+    "shares": 10,
+    "buy_price": 337.68,
+    "target_high": 353.1
+  },
+  "TSLA": {
+    "shares": 10,
+    "buy_price": 430.5,
+    "target_high": 444.9
+  },
+  "IDXX": {
+    "shares": 10,
+    "buy_price": 468.5,
+    "target_high": 468.5
   }
 }
