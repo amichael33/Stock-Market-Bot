@@ -23,5 +23,10 @@
     "shares": 10,
     "buy_price": 83.9,
     "target_high": 88.42
+  },
+  "AMZN": {
+    "shares": 10,
+    "buy_price": 237.44,
+    "target_high": 255.41
   }
 }
