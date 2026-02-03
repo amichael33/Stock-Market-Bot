@@ -51,10 +51,16 @@ BASE_URL = api_keys.get('endpoint', 'https://paper-api.alpaca.markets/v2')
 MAX_TRADES_PER_DAY = 15
 MAX_POSITIONS = 10
 SHARES_PER_TRADE = 10
-BUY_THRESHOLD_PERCENT = 0.02
+# Buy zone: only buy when price within this % of channel low (wider = fewer but higher-conviction buys)
+BUY_THRESHOLD_PERCENT = 0.03   # 3% from low (was 2% - reduces noise)
+# Sell zone: take profit when within this % of channel high
 SELL_THRESHOLD_PERCENT = 0.02
 COOLDOWN_DAYS = 3  # for the same stock
 HISTORY_DAYS = 20  # days of historical data
+# Trend filter: only buy when price above this many-day simple moving average
+TREND_MA_DAYS = 10
+# Trailing stop: sell if price falls this % from highest price since buy (locks in gains, reduces whipsaw)
+TRAILING_STOP_PERCENT = 0.04  # 4% pullback from peak
 
 #! find a better way to update it/get list
 WATCHLIST = [

@@ -81,15 +81,17 @@ class StockBot:
 
     def calculate_channel(self, price_history):
         """Calculate 20-day high and low from price history"""
-        #! for testing, using min 3 days instead of 20
-        min_days = 3  #! change to 20 later
+        min_days = HISTORY_DAYS
         if len(price_history) < min_days:
-            return None, None
+            return None, None, None
 
         twenty_day_high = max(price_history)
         twenty_day_low = min(price_history)
+        # Simple moving average for trend filter (use last TREND_MA_DAYS)
+        ma_days = min(TREND_MA_DAYS, len(price_history))
+        sma = sum(price_history[-ma_days:]) / ma_days
 
-        return twenty_day_high, twenty_day_low
+        return twenty_day_high, twenty_day_low, sma
 
     def update_historical_data(self):
         """Update historical data with current prices"""
@@ -114,7 +116,7 @@ class StockBot:
         """Calculate metrics for all stocks in watchlist"""
         print(f"\nCalculating metrics for stocks with sufficient data...")
         stocks_with_data = 0
-        min_days = 3  #!change to 20 later
+        min_days = HISTORY_DAYS
 
         for symbol in self.watchlist:
             price_history = self.historical_data.get(symbol, [])
@@ -126,7 +128,10 @@ class StockBot:
             stocks_with_data += 1
             print(f"{symbol}: {len(price_history)} days of data - READY")
 
-            twenty_day_high, twenty_day_low = self.calculate_channel(price_history)
+            result = self.calculate_channel(price_history)
+            if result[0] is None:
+                continue
+            twenty_day_high, twenty_day_low, sma = result
             current_price = price_history[-1]
 
             channel_range = twenty_day_high - twenty_day_low
@@ -135,15 +140,18 @@ class StockBot:
             else:
                 distance_from_low = 0.5
 
-            buy_threshold = twenty_day_low * 1.02
-            sell_threshold = twenty_day_high * 0.98
+            buy_threshold = twenty_day_low * (1 + BUY_THRESHOLD_PERCENT)
+            sell_threshold = twenty_day_high * (1 - SELL_THRESHOLD_PERCENT)
+            # Trend filter: only buy when price is above SMA (uptrend)
+            in_uptrend = current_price > sma
 
             self.stock_metrics[symbol] = {
                 "current_price": current_price,
                 "twenty_day_high": twenty_day_high,
                 "twenty_day_low": twenty_day_low,
+                "sma": sma,
                 "distance_from_low": distance_from_low,
-                "in_buy_zone": current_price <= buy_threshold,
+                "in_buy_zone": current_price <= buy_threshold and in_uptrend,
                 "in_sell_zone": current_price >= sell_threshold
             }
 
@@ -170,6 +178,11 @@ class StockBot:
                 continue
 
             current_price = metrics["current_price"]
+            buy_price = position["buy_price"]
+            # Update peak price for trailing stop
+            peak = position.get("peak_price", buy_price)
+            peak = max(peak, current_price)
+            position["peak_price"] = peak
 
             sell_triggered = False
             reason = ""
@@ -180,6 +193,10 @@ class StockBot:
             elif current_price < metrics["twenty_day_low"]:
                 sell_triggered = True
                 reason = "stop loss - broke support"
+            # Trailing stop: lock in gains if price drops TRAILING_STOP_PERCENT from peak
+            elif peak > buy_price and current_price <= peak * (1 - TRAILING_STOP_PERCENT):
+                sell_triggered = True
+                reason = f"trailing stop ({TRAILING_STOP_PERCENT*100:.0f}% from peak)"
 
             if sell_triggered:
                 profit = (current_price - position["buy_price"]) * position["shares"]
@@ -198,10 +215,9 @@ class StockBot:
                     print(f"Failed to submit sell order for {symbol}: {e}")
                     continue
 
-                print(".2f")
-                print(".2f")
-                print(f"  Shares: {position['shares']}")
-                print(".2f")
+                pct = (current_price / buy_price - 1) * 100
+                print(f"  Profit: ${profit:.2f} ({pct:+.1f}%)")
+                print(f"  Price: ${current_price:.2f}  Shares: {position['shares']}")
 
                 symbols_to_remove.append(symbol)
                 self.cooldown_tracker[symbol] = self.current_date.isoformat()
@@ -264,15 +280,13 @@ class StockBot:
                 print(f"Failed to submit buy order for {symbol}: {e}")
                 continue
 
-            print(".2f")
-            print(".2f")
-            print(".2f")
-            print(".1f")
+            print(f"  Price: ${current_price:.2f}  Cost: ${order_cost:.2f}  Balance: ${account_balance:.2f}  Shares: {SHARES_PER_TRADE}")
 
             self.portfolio[symbol] = {
                 "shares": SHARES_PER_TRADE,
                 "buy_price": current_price,
-                "target_high": metrics["twenty_day_high"]
+                "target_high": metrics["twenty_day_high"],
+                "peak_price": current_price  # for trailing stop
             }
 
             self.cooldown_tracker[symbol] = self.current_date.isoformat()
@@ -295,12 +309,9 @@ class StockBot:
                 percent_to_target = ((metrics["twenty_day_high"] - current_price) / current_price) * 100
             else:
                 percent_to_target = 0.0
+            pct_pnl = (current_price / position["buy_price"] - 1) * 100
 
-            print(f"HOLD {symbol}")
-            print(".2f")
-            print(".2f")
-            print(".1f")
-            print(".2f")
+            print(f"HOLD {symbol}  Price: ${current_price:.2f}  P/L: ${unrealized_pnl:.2f} ({pct_pnl:+.1f}%)  To target: {percent_to_target:.1f}%")
 
     def print_summary(self):
         """Print daily summary"""
