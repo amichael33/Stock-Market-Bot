@@ -22,5 +22,11 @@
     "buy_price": 148.45,
     "target_high": 291.0,
     "peak_price": 148.45
+  },
+  "VRTX": {
+    "shares": 10,
+    "buy_price": 470.27,
+    "target_high": 524.0,
+    "peak_price": 470.27
   }
 }
