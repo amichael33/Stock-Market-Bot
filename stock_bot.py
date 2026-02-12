@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 import sys
 from config import *
+#removed /secret folder
 
 class StockBot:
     def __init__(self):
