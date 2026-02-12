@@ -8,6 +8,50 @@ import sys
 from config import *
 #removed /secret folder
 
+
+class BSTNode:
+    def __init__(self, distance, symbol):
+        self.distance = distance  # Key: distance_from_low
+        self.symbol = symbol      # Value: stock symbol
+        self.left = None
+        self.right = None
+
+
+class BuyCandidateBST:
+    """Stores stocks sorted by distance_from_low (ascending), so stocks closest """
+    def __init__(self):
+        self.root = None
+    
+    def insert(self, distance, symbol):
+        """Insert a candidate into the BST."""
+        self.root = self._insert_recursive(self.root, distance, symbol)
+    
+    def _insert_recursive(self, node, distance, symbol):
+        """Recursive helper for insertion."""
+        if node is None:
+            return BSTNode(distance, symbol)
+        
+        if distance < node.distance:
+            node.left = self._insert_recursive(node.left, distance, symbol)
+        else:
+            node.right = self._insert_recursive(node.right, distance, symbol)
+        
+        return node
+    
+    def in_order_traversal(self):
+        """Return symbols in ascending order of distance_from_low."""
+        result = []
+        self._in_order_recursive(self.root, result)
+        return result
+    
+    def _in_order_recursive(self, node, result):
+        """Recursive in-order traversal (left, root, right)."""
+        if node is not None:
+            self._in_order_recursive(node.left, result)
+            result.append(node.symbol)
+            self._in_order_recursive(node.right, result)
+
+
 class StockBot:
     def __init__(self):
         self.trading_client = TradingClient(API_KEY, API_SECRET, paper=True)
@@ -229,20 +273,24 @@ class StockBot:
             del self.portfolio[symbol]
 
     def get_buy_candidates(self):
-        """Get buy candidates sorted by distance from low using BST-like approach"""
-        buy_candidates = []
+        """Get buy candidates sorted by distance from low using Binary Search Tree.
+        
+        Uses BST to maintain sorted order of candidates by distance_from_low,
+        prioritizing stocks closest to their 20-day low (best buy opportunities).
+        """
+        bst = BuyCandidateBST()
 
         for symbol, metrics in self.stock_metrics.items():
             if (symbol not in self.portfolio and
                 metrics["in_buy_zone"] and
                 (symbol not in self.cooldown_tracker or
-                 self.days_since(self.cooldown_tracker[symbol]) >= 3)):
+                 self.days_since(self.cooldown_tracker[symbol]) >= COOLDOWN_DAYS)):
 
-                buy_candidates.append((metrics["distance_from_low"], symbol))
+                # Insert into BST sorted by distance_from_low
+                bst.insert(metrics["distance_from_low"], symbol)
 
-        buy_candidates.sort(key=lambda x: x[0])
-
-        return [symbol for _, symbol in buy_candidates]
+        # In-order traversal returns symbols in ascending order (closest to low first)
+        return bst.in_order_traversal()
 
     def execute_buy_orders(self, buy_candidates):
         """Execute buy orders for selected candidates"""
