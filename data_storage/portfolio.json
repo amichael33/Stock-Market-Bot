@@ -1,10 +1,4 @@
 {
-  "TSLA": {
-    "shares": 10,
-    "buy_price": 402.01,
-    "target_high": 435.38,
-    "peak_price": 412.43
-  },
   "AAPL": {
     "shares": 10,
     "buy_price": 260.91,
@@ -15,6 +9,6 @@
     "shares": 10,
     "buy_price": 379.85,
     "target_high": 408.45,
-    "peak_price": 379.85
+    "peak_price": 391.27
   }
 }
