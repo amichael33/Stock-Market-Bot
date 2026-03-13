@@ -10,5 +10,11 @@
     "buy_price": 260.91,
     "target_high": 288.86,
     "peak_price": 260.91
+  },
+  "AMGN": {
+    "shares": 10,
+    "buy_price": 379.85,
+    "target_high": 408.45,
+    "peak_price": 379.85
   }
 }
