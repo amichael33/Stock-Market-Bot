@@ -5,10 +5,16 @@
     "target_high": 288.86,
     "peak_price": 260.91
   },
-  "AMGN": {
+  "ILMN": {
     "shares": 10,
-    "buy_price": 379.85,
-    "target_high": 408.45,
-    "peak_price": 391.27
+    "buy_price": 121.83,
+    "target_high": 130.28,
+    "peak_price": 121.83
+  },
+  "IQV": {
+    "shares": 10,
+    "buy_price": 169.65,
+    "target_high": 181.0,
+    "peak_price": 169.65
   }
 }
