@@ -9,7 +9,7 @@
     "shares": 10,
     "buy_price": 121.83,
     "target_high": 130.28,
-    "peak_price": 122.565
+    "peak_price": 124.12
   },
   "IQV": {
     "shares": 10,
@@ -22,5 +22,11 @@
     "buy_price": 211.74,
     "target_high": 217.26,
     "peak_price": 211.74
+  },
+  "NFLX": {
+    "shares": 10,
+    "buy_price": 94.97,
+    "target_high": 103.43,
+    "peak_price": 94.97
   }
 }
