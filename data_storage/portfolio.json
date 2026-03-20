@@ -5,12 +5,6 @@
     "target_high": 288.86,
     "peak_price": 260.91
   },
-  "ILMN": {
-    "shares": 10,
-    "buy_price": 121.83,
-    "target_high": 130.28,
-    "peak_price": 124.12
-  },
   "IQV": {
     "shares": 10,
     "buy_price": 169.65,
@@ -28,5 +22,11 @@
     "buy_price": 94.97,
     "target_high": 103.43,
     "peak_price": 94.97
+  },
+  "META": {
+    "shares": 10,
+    "buy_price": 624.26,
+    "target_high": 670.0,
+    "peak_price": 624.26
   }
 }
