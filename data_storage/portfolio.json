@@ -11,12 +11,6 @@
     "target_high": 181.0,
     "peak_price": 169.65
   },
-  "AMZN": {
-    "shares": 10,
-    "buy_price": 211.74,
-    "target_high": 217.26,
-    "peak_price": 211.74
-  },
   "NFLX": {
     "shares": 10,
     "buy_price": 94.97,
@@ -28,5 +22,11 @@
     "buy_price": 624.26,
     "target_high": 670.0,
     "peak_price": 624.26
+  },
+  "BIIB": {
+    "shares": 10,
+    "buy_price": 184.32,
+    "target_high": 240.0,
+    "peak_price": 184.32
   }
 }
