@@ -1,10 +1,4 @@
 {
-  "AAPL": {
-    "shares": 10,
-    "buy_price": 260.91,
-    "target_high": 288.86,
-    "peak_price": 260.91
-  },
   "IQV": {
     "shares": 10,
     "buy_price": 169.65,
@@ -21,6 +15,18 @@
     "shares": 10,
     "buy_price": 184.32,
     "target_high": 240.0,
-    "peak_price": 187.9
+    "peak_price": 188.92
+  },
+  "VRTX": {
+    "shares": 10,
+    "buy_price": 457.65,
+    "target_high": 510.91,
+    "peak_price": 457.65
+  },
+  "NVDA": {
+    "shares": 10,
+    "buy_price": 178.71,
+    "target_high": 184.71,
+    "peak_price": 178.71
   }
 }
