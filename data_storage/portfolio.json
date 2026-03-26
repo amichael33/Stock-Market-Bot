@@ -1,10 +1,4 @@
 {
-  "IQV": {
-    "shares": 10,
-    "buy_price": 169.65,
-    "target_high": 181.0,
-    "peak_price": 169.65
-  },
   "NFLX": {
     "shares": 10,
     "buy_price": 94.97,
@@ -15,18 +9,24 @@
     "shares": 10,
     "buy_price": 184.32,
     "target_high": 240.0,
-    "peak_price": 188.92
+    "peak_price": 191.335
   },
   "VRTX": {
     "shares": 10,
     "buy_price": 457.65,
     "target_high": 510.91,
-    "peak_price": 457.65
+    "peak_price": 470.25
   },
   "NVDA": {
     "shares": 10,
     "buy_price": 178.71,
     "target_high": 184.71,
     "peak_price": 178.71
+  },
+  "AMZN": {
+    "shares": 10,
+    "buy_price": 212.17,
+    "target_high": 213.72,
+    "peak_price": 212.17
   }
 }
