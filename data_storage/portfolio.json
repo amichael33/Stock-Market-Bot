@@ -5,12 +5,6 @@
     "target_high": 103.43,
     "peak_price": 94.97
   },
-  "VRTX": {
-    "shares": 10,
-    "buy_price": 457.65,
-    "target_high": 510.91,
-    "peak_price": 470.25
-  },
   "NVDA": {
     "shares": 10,
     "buy_price": 178.71,
