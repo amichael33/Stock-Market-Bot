@@ -4,5 +4,11 @@
     "buy_price": 440.05,
     "target_high": 461.57,
     "peak_price": 444.67
+  },
+  "IDXX": {
+    "shares": 10,
+    "buy_price": 579.23,
+    "target_high": 596.72,
+    "peak_price": 579.23
   }
 }
