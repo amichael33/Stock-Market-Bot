@@ -1,10 +1,4 @@
 {
-  "AAPL": {
-    "shares": 10,
-    "buy_price": 311.64,
-    "target_high": 321.37,
-    "peak_price": 313.67
-  },
   "NFLX": {
     "shares": 10,
     "buy_price": 82.68,
