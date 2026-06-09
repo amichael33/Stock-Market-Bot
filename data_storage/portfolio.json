@@ -4,5 +4,11 @@
     "buy_price": 82.68,
     "target_high": 90.14,
     "peak_price": 82.68
+  },
+  "AMZN": {
+    "shares": 10,
+    "buy_price": 249.5,
+    "target_high": 273.28,
+    "peak_price": 249.5
   }
 }
