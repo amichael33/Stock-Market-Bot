@@ -5,22 +5,16 @@
     "target_high": 90.14,
     "peak_price": 82.68
   },
-  "AMZN": {
-    "shares": 10,
-    "buy_price": 249.5,
-    "target_high": 273.28,
-    "peak_price": 249.5
-  },
   "NVDA": {
     "shares": 10,
     "buy_price": 205.11,
     "target_high": 228.39,
-    "peak_price": 211.5
+    "peak_price": 219.4
   },
   "AAPL": {
     "shares": 10,
     "buy_price": 295.36,
     "target_high": 315.9,
-    "peak_price": 295.36
+    "peak_price": 296.53
   }
 }
