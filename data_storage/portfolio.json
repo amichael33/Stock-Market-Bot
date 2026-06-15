@@ -15,6 +15,12 @@
     "shares": 10,
     "buy_price": 205.11,
     "target_high": 228.39,
-    "peak_price": 205.11
+    "peak_price": 211.5
+  },
+  "AAPL": {
+    "shares": 10,
+    "buy_price": 295.36,
+    "target_high": 315.9,
+    "peak_price": 295.36
   }
 }
