@@ -5,28 +5,22 @@
     "target_high": 90.14,
     "peak_price": 82.68
   },
-  "CRM": {
-    "shares": 10,
-    "buy_price": 154.37,
-    "target_high": 175.56,
-    "peak_price": 168.79
-  },
   "META": {
     "shares": 10,
     "buy_price": 563.91,
     "target_high": 621.08,
-    "peak_price": 563.91
+    "peak_price": 567.1
   },
   "GOOGL": {
     "shares": 10,
     "buy_price": 350.8,
     "target_high": 372.88,
-    "peak_price": 350.8
+    "peak_price": 353.73
   },
   "GILD": {
     "shares": 10,
     "buy_price": 125.93,
     "target_high": 129.94,
-    "peak_price": 125.93
+    "peak_price": 126.33
   }
 }
