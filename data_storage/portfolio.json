@@ -9,6 +9,24 @@
     "shares": 10,
     "buy_price": 154.37,
     "target_high": 175.56,
-    "peak_price": 162.75
+    "peak_price": 168.79
+  },
+  "META": {
+    "shares": 10,
+    "buy_price": 563.91,
+    "target_high": 621.08,
+    "peak_price": 563.91
+  },
+  "GOOGL": {
+    "shares": 10,
+    "buy_price": 350.8,
+    "target_high": 372.88,
+    "peak_price": 350.8
+  },
+  "GILD": {
+    "shares": 10,
+    "buy_price": 125.93,
+    "target_high": 129.94,
+    "peak_price": 125.93
   }
 }
