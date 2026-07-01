@@ -5,12 +5,6 @@
     "target_high": 90.14,
     "peak_price": 82.68
   },
-  "GOOGL": {
-    "shares": 10,
-    "buy_price": 350.8,
-    "target_high": 372.88,
-    "peak_price": 359.26
-  },
   "NVDA": {
     "shares": 10,
     "buy_price": 198.03,
