@@ -1,1 +1,8 @@
-{}
+{
+  "AMZN": {
+    "shares": 10,
+    "buy_price": 245.23,
+    "target_high": 258.83,
+    "peak_price": 245.23
+  }
+}
