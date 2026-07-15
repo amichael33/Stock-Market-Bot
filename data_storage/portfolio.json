@@ -1,20 +1,14 @@
 {
-  "AMZN": {
-    "shares": 10,
-    "buy_price": 245.23,
-    "target_high": 258.83,
-    "peak_price": 248.18
-  },
   "MSFT": {
     "shares": 10,
     "buy_price": 386.92,
     "target_high": 404.08,
-    "peak_price": 386.92
+    "peak_price": 394.37
   },
-  "GOOGL": {
+  "NFLX": {
     "shares": 10,
-    "buy_price": 358.87,
-    "target_high": 369.37,
-    "peak_price": 358.87
+    "buy_price": 74.28,
+    "target_high": 82.07,
+    "peak_price": 74.28
   }
 }
