@@ -1,10 +1,4 @@
 {
-  "MSFT": {
-    "shares": 10,
-    "buy_price": 386.92,
-    "target_high": 404.08,
-    "peak_price": 394.37
-  },
   "NFLX": {
     "shares": 10,
     "buy_price": 74.28,
