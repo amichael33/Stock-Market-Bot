@@ -4,5 +4,11 @@
     "buy_price": 74.28,
     "target_high": 82.07,
     "peak_price": 74.28
+  },
+  "NVDA": {
+    "shares": 10,
+    "buy_price": 209.73,
+    "target_high": 213.96,
+    "peak_price": 209.73
   }
 }
