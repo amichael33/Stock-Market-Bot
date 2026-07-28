@@ -1,10 +1,4 @@
 {
-  "NFLX": {
-    "shares": 10,
-    "buy_price": 74.28,
-    "target_high": 82.07,
-    "peak_price": 74.28
-  },
   "NVDA": {
     "shares": 10,
     "buy_price": 209.73,
