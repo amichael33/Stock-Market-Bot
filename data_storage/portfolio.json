@@ -1,14 +1,8 @@
 {
-  "NVDA": {
-    "shares": 10,
-    "buy_price": 209.73,
-    "target_high": 213.96,
-    "peak_price": 209.73
-  },
   "TSLA": {
     "shares": 10,
     "buy_price": 307.76,
     "target_high": 390.31,
-    "peak_price": 323.18
+    "peak_price": 324.26
   }
 }
