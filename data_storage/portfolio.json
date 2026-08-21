@@ -4,5 +4,17 @@
     "buy_price": 265.0,
     "target_high": 278.6,
     "peak_price": 265.0
+  },
+  "MSFT": {
+    "shares": 10,
+    "buy_price": 487.0,
+    "target_high": 515.0,
+    "peak_price": 487.0
+  },
+  "GOOGL": {
+    "shares": 10,
+    "buy_price": 346.8,
+    "target_high": 356.87,
+    "peak_price": 346.8
   }
 }
