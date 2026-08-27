@@ -1,14 +1,1 @@
-{
-  "AMZN": {
-    "shares": 10,
-    "buy_price": 265.0,
-    "target_high": 278.6,
-    "peak_price": 265.0
-  },
-  "META": {
-    "shares": 10,
-    "buy_price": 552.59,
-    "target_high": 609.1,
-    "peak_price": 577.39
-  }
-}
+{}
