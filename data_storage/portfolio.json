@@ -1,14 +1,1 @@
-{
-  "GOOGL": {
-    "shares": 10,
-    "buy_price": 342.38,
-    "target_high": 356.76,
-    "peak_price": 343.34
-  },
-  "AMZN": {
-    "shares": 10,
-    "buy_price": 258.36,
-    "target_high": 276.78,
-    "peak_price": 258.36
-  }
-}
+{}
