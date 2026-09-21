@@ -3,18 +3,12 @@
     "shares": 10,
     "buy_price": 251.61,
     "target_high": 272.03,
-    "peak_price": 254.4
+    "peak_price": 258.4
   },
   "AMGN": {
     "shares": 10,
     "buy_price": 386.59,
     "target_high": 458.52,
-    "peak_price": 386.59
-  },
-  "TSLA": {
-    "shares": 10,
-    "buy_price": 364.1,
-    "target_high": 378.08,
-    "peak_price": 364.1
+    "peak_price": 396.8
   }
 }
