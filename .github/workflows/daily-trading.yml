@@ -4,11 +4,11 @@ on:
   push:
   schedule:
   
-    # 9:30 AM ET (Market Open) = 13:30 UTC
-    - cron: '30 13 * * 1-5'  # Monday-Friday at 13:30 UTC
-    # 12:30 PM ET (Mid-Market) = 16:30 UTC
-    - cron: '30 16 * * 1-5'  # Monday-Friday at 16:30 UTC
-  workflow_dispatch: # Manual trigger for testing
+  #   # 9:30 AM ET (Market Open) = 13:30 UTC
+  #   - cron: '30 13 * * 1-5'  # Monday-Friday at 13:30 UTC
+  #   # 12:30 PM ET (Mid-Market) = 16:30 UTC
+  #   - cron: '30 16 * * 1-5'  # Monday-Friday at 16:30 UTC
+  # workflow_dispatch: # Manual trigger for testing
 
 permissions:
   contents: write
