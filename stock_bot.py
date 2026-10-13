@@ -6,7 +6,6 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 import sys
 from config import *
-#removed /secret folder
 
 
 class BSTNode:

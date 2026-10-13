@@ -1,14 +1,10 @@
 name: Daily Stock Trading Bot
 
+# Automatic runs are disabled so a public repo does not trade or
+# publish account logs on every push. Trigger this workflow manually
+# from the Actions tab when you want a paper-trading cycle.
 on:
-  push:
-  schedule:
-  
-  #   # 9:30 AM ET (Market Open) = 13:30 UTC
-  #   - cron: '30 13 * * 1-5'  # Monday-Friday at 13:30 UTC
-  #   # 12:30 PM ET (Mid-Market) = 16:30 UTC
-  #   - cron: '30 16 * * 1-5'  # Monday-Friday at 16:30 UTC
-  # workflow_dispatch: # Manual trigger for testing
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -26,7 +22,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
 
@@ -49,13 +45,8 @@ jobs:
 
     - name: Commit and push data changes
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git add data_storage/
         git diff --staged --quiet || git commit -m "Update trading data [automated]"
-
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+        git push
